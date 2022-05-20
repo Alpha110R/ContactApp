@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
-        android:theme="@style/Theme.ContactAppNew">
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
         <activity
             android:name=".MainActivity"
             android:exported="true"

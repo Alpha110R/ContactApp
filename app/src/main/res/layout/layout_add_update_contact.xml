@@ -15,25 +15,25 @@
         android:gravity="center"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="20dp">
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/ic_logo"
-        android:layout_marginTop="20dp" />
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_logo"
+            android:layout_marginTop="20dp" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="Create Account"
-        android:textSize="40sp"
-        android:textColor="#282F3A"
-        android:layout_marginTop="10dp"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Contact"
+            android:textSize="40sp"
+            android:textColor="#282F3A"
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/signIn_textInputLayout"
+        android:id="@+id/contact_textInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonsLayout"
@@ -56,7 +56,7 @@
             app:errorEnabled="true"
             app:hintEnabled="false">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signUp_EDT_firstName"
+                android:id="@+id/contact_EDT_firstName"
                 android:layout_width="360dp"
                 android:layout_height="70dp"
                 android:layout_marginBottom="20dp"
@@ -86,19 +86,19 @@
             app:errorEnabled="true"
             app:hintEnabled="false">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signUp_EDT_lastName"
+                android:id="@+id/contact_EDT_lastName"
                 android:layout_width="360dp"
                 android:layout_height="70dp"
                 android:layout_marginBottom="20dp"
                 android:drawableStart="@drawable/ic_edt_name_32"
                 android:drawablePadding="10dp"
                 android:drawableTint="#6191E4"
-                android:hint="@string/last_name"
                 android:ems="10"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:textColor="#282F3A"
                 android:textSize="25sp"
-                android:textCursorDrawable="@drawable/color_cursor"/>
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:hint="@string/last_name" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -117,7 +117,7 @@
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signUp_EDT_email"
+                android:id="@+id/contact_EDT_email"
                 android:layout_width="360dp"
                 android:layout_height="70dp"
                 android:layout_marginBottom="20dp"
@@ -139,10 +139,11 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
             android:gravity="center"
+            android:hint="@string/phone_number"
             android:textColorHint="#282F3A"
             app:boxStrokeColor="#6191E4"
             app:cornerRadius="20dp"
-            app:endIconMode="password_toggle"
+            app:endIconMode="clear_text"
             app:endIconTint="#6191E4"
             app:hintTextColor="#282F3A"
             app:counterEnabled="true"
@@ -151,18 +152,17 @@
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signUp_EDT_password"
+                android:id="@+id/contact_EDT_password"
                 android:layout_width="360dp"
                 android:layout_height="70dp"
-                android:drawableStart="@drawable/ic_edt_password_24"
+                android:drawableStart="@drawable/ic_edt_phone_30"
                 android:drawablePadding="10dp"
                 android:drawableTint="#6191E4"
-                android:hint="@string/Password"
+                android:hint="@string/phone_number"
                 android:ems="10"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:textColor="#282F3A"
                 android:textSize="25sp"
-                android:inputType="textPassword"
                 android:textCursorDrawable="@drawable/color_cursor"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -178,26 +178,15 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp">
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/signUp_BTN_signUp"
+            android:id="@+id/contact_BTN_finish"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="@string/sign_up"
+            android:text="@string/finish"
             android:textSize="30sp"
             android:textAllCaps="false"
             android:layout_marginBottom="10dp"
             android:backgroundTint="#4770B6"
-            app:cornerRadius="10dp"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/signUp_BTN_signIn"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:text="@string/sign_in"
-            android:textSize="25sp"
-            android:textAllCaps="false"
-            android:backgroundTint="#6398F3"
             app:cornerRadius="10dp"/>
     </LinearLayout>
 

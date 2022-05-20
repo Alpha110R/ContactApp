@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ContactAppNew</string>
+    <string name="app_name">Your Contacts</string>
     <string name="Email">Email</string>
     <string name="Password">Password</string>
     <string name="sign_in">Sign In</string>
@@ -7,4 +7,7 @@
     <string name="last_name">Last Name</string>
     <string name="first_name">First Name</string>
     <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="finish">Finish</string>
+    <string name="add_contact">Add Contact</string>
 </resources>

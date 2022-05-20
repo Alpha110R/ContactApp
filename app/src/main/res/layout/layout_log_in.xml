@@ -11,12 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="20dp">
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/ic_logo"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/pageTitle"
@@ -44,14 +45,14 @@
             android:layout_height="90dp"
             android:fontFamily="sans-serif-condensed-medium"
             android:gravity="center"
-            android:hint="@string/Email"
             android:textColorHint="#282F3A"
             app:boxStrokeColor="#6191E4"
             app:cornerRadius="20dp"
             app:endIconMode="clear_text"
             app:endIconTint="#6191E4"
             app:errorEnabled="true"
-            app:hintTextColor="#282F3A">
+            app:hintTextColor="#282F3A"
+            app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signIn_EDT_email"
@@ -61,6 +62,7 @@
                 android:drawableStart="@drawable/ic_edt_email_30"
                 android:drawablePadding="10dp"
                 android:drawableTint="#6191E4"
+                android:hint="@string/Email"
                 android:ems="10"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="textEmailAddress"
@@ -75,7 +77,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
             android:gravity="center"
-            android:hint="@string/Password"
             android:textColorHint="#282F3A"
             app:boxStrokeColor="#6191E4"
             app:cornerRadius="20dp"
@@ -84,7 +85,8 @@
             app:endIconMode="password_toggle"
             app:endIconTint="#6191E4"
             app:errorEnabled="true"
-            app:hintTextColor="#282F3A" >
+            app:hintTextColor="#282F3A"
+            app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signIn_EDT_password"
@@ -93,6 +95,7 @@
                 android:drawableStart="@drawable/ic_edt_password_24"
                 android:drawablePadding="10dp"
                 android:drawableTint="#6191E4"
+                android:hint="@string/Password"
                 android:ems="10"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="textPassword"
