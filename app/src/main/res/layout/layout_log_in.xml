@@ -84,7 +84,7 @@
             app:endIconMode="password_toggle"
             app:endIconTint="#6191E4"
             app:errorEnabled="true"
-            app:hintTextColor="#282F3A">
+            app:hintTextColor="#282F3A" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signIn_EDT_password"
