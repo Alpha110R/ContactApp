@@ -2,14 +2,33 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:background="#E7ECF6"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_logo"
+        android:layout_marginTop="20dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/pageTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Log In"
+        android:textSize="40sp"
+        android:textColor="#282F3A"
+        android:layout_marginTop="10dp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/signIn_textInputLayout"
@@ -31,12 +50,12 @@
             app:cornerRadius="20dp"
             app:endIconMode="clear_text"
             app:endIconTint="#6191E4"
-            app:hintTextColor="#282F3A"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            app:hintTextColor="#282F3A">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signIn_EDT_emil"
-                android:layout_width="300dp"
+                android:id="@+id/signIn_EDT_email"
+                android:layout_width="360dp"
                 android:layout_height="70dp"
                 android:layout_marginBottom="20dp"
                 android:drawableStart="@drawable/ic_edt_email_30"
@@ -44,9 +63,10 @@
                 android:drawableTint="#6191E4"
                 android:ems="10"
                 android:fontFamily="sans-serif-condensed-medium"
+                android:inputType="textEmailAddress"
                 android:textColor="#282F3A"
-                android:textSize="30sp"
-                android:inputType="textEmailAddress" />
+                android:textSize="25sp"
+                android:textCursorDrawable="@drawable/color_cursor"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -59,30 +79,32 @@
             android:textColorHint="#282F3A"
             app:boxStrokeColor="#6191E4"
             app:cornerRadius="20dp"
-            app:endIconMode="clear_text"
-            app:endIconTint="#6191E4"
-            app:hintTextColor="#282F3A"
             app:counterEnabled="true"
             app:counterMaxLength="10"
-            app:errorEnabled="true">
+            app:endIconMode="password_toggle"
+            app:endIconTint="#6191E4"
+            app:errorEnabled="true"
+            app:hintTextColor="#282F3A">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signIn_EDT_password"
-                android:layout_width="300dp"
+                android:layout_width="360dp"
                 android:layout_height="70dp"
                 android:drawableStart="@drawable/ic_edt_password_24"
                 android:drawablePadding="10dp"
                 android:drawableTint="#6191E4"
                 android:ems="10"
                 android:fontFamily="sans-serif-condensed-medium"
+                android:inputType="textPassword"
                 android:textColor="#282F3A"
-                android:textSize="30sp"
-                android:inputType="textPassword" />
+                android:textSize="25sp"
+                android:textCursorDrawable="@drawable/color_cursor"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/buttonsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -90,7 +112,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="90dp">
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/signIn_EDT_signIn"
+        android:id="@+id/signIn_BTN_signIn"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed-medium"
@@ -102,7 +124,7 @@
         app:cornerRadius="10dp"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/signIn_EDT_signUp"
+            android:id="@+id/signIn_BTN_signUp"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"

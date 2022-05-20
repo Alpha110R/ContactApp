@@ -5,8 +5,13 @@
       <map>
         <entry key="..\:/ALON/programing/3rd year/easySale/app/src/main/res/layout/activity_main.xml" value="0.14322916666666666" />
         <entry key="..\:/ALON/programing/New folder/ContactAppNew/app/src/main/res/drawable-anydpi/ic_edt_email.xml" value="0.247" />
+        <entry key="..\:/ALON/programing/New folder/ContactAppNew/app/src/main/res/drawable/color_cursor.xml" value="0.1975" />
         <entry key="..\:/ALON/programing/New folder/ContactAppNew/app/src/main/res/drawable/ic_baseline_person_add_alt_1_30.xml" value="0.247" />
         <entry key="..\:/ALON/programing/New folder/ContactAppNew/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/ALON/programing/New folder/ContactAppNew/app/src/main/res/layout/layout_create_account.xml" value="0.25" />
+        <entry key="..\:/ALON/programing/New folder/ContactAppNew/app/src/main/res/layout/layout_log_in.xml" value="0.25" />
+        <entry key="..\:/ALON/programing/New folder/ContactAppNew/app/src/main/res/layout/layout_sign_in.xml" value="0.1" />
+        <entry key="..\:/ALON/programing/New folder/ContactAppNew/app/src/main/res/layout/layout_sign_up.xml" value="0.33" />
       </map>
     </option>
   </component>

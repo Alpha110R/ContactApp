@@ -1,16 +1,12 @@
 package com.example.contactappnew;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.gson.JsonObject;
 
 import java.util.List;
 
@@ -22,14 +18,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     private TextView txt;
-    private MaterialButton button;
+    private MaterialButton signIn_BTN_signUp, signUp_BTN_signIn;
     private UserDatabase database;
     private UserDao userDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.layout_log_in);
+        signIn_BTN_signUp = findViewById(R.id.signIn_BTN_signUp);
+        signIn_BTN_signUp.setOnClickListener(view -> {
+            setContentView(R.layout.layout_create_account);
+        });
         String mail1 = "alonr@gmail.com";
         String firstName1 = "alonn";
         String lastName1 = "Ronder";
