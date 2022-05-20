@@ -19,4 +19,7 @@ public interface ContactDao {
     @Query("DELETE FROM contact")
     void deleteAll();
 
+    @Query("DELETE FROM contact WHERE id LIKE :id")
+    void deleteContact(int id);
+
 }
