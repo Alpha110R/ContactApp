@@ -30,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        txt = findViewById(R.id.txt);
-        button = findViewById(R.id.button);
         String mail1 = "alonr@gmail.com";
         String firstName1 = "alonn";
         String lastName1 = "Ronder";
@@ -49,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         //userDao.insertUser(new UserEntity("TIMOR", "LAST", "asd@", "password"));
         List<UserEntity> userTemp;
         userTemp = userDao.getUsers();
-        txt.setText("user ID: " + userTemp.get(1).getId() + " user Name: " + userTemp.get(1).getFirstName() + " pass: " + userTemp.get(1).getPassword());
 
 
 
@@ -73,11 +70,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<UserGender> call, Throwable t) {
             }
         });
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+
 
 
     }

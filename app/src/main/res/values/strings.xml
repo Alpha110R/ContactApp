@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ContactAppNew</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
 </resources>
