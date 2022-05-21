@@ -1,4 +1,4 @@
-package com.example.contactappnew;
+package com.example.contactappnew.Utils;
 
 import static android.content.Context.VIBRATOR_SERVICE;
 import android.content.Context;

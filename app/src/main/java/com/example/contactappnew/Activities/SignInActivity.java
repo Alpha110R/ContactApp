@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import com.example.contactappnew.MySignal;
+import com.example.contactappnew.Utils.MySignal;
 import com.example.contactappnew.R;
 import com.example.contactappnew.Repository.Repository;
 import com.example.contactappnew.Entities.UserEntity;
@@ -42,6 +42,7 @@ public class SignInActivity extends AppCompatActivity {
         signIn_BTN_register.setOnClickListener(view -> {
             intent = new Intent(SignInActivity.this, RegisterActivity.class);
             startActivity(intent);
+            finish();
         });
     }
 
@@ -68,6 +69,7 @@ public class SignInActivity extends AppCompatActivity {
         bundle.putInt(Enums.USERID.toString(), userEntity.getId());
         intent.putExtra(Enums.BUNDLE.toString(), bundle);
         startActivity(intent);
+        finish();
     }
 
     public void toastMessagesAccordingError(){
@@ -81,6 +83,7 @@ public class SignInActivity extends AppCompatActivity {
             signIn_EDT_password.setBackgroundColor(Color.parseColor("#4DFF6666"));
             MySignal.getMe().makeToastMessage("User doesn't exist. Go to Registration");
         }
+        MySignal.getMe().vibrate();
     }
 
 

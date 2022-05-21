@@ -19,6 +19,7 @@ public class ContactAdapterToListView extends RecyclerView.Adapter<RecyclerView.
     public interface CallBack_ContactCard {
         void remove(ContactEntity contactEntity, int position);
         void settings(ContactEntity contactEntity, int position);
+        void clicked(ContactEntity contactEntity, int position);
     }
 
     private ArrayList<ContactEntity> contacts;
@@ -89,6 +90,14 @@ public class ContactAdapterToListView extends RecyclerView.Adapter<RecyclerView.
                 public void onClick(View view) {
                     if (callBackContactCard != null) {
                         callBackContactCard.settings(getContact(getAdapterPosition()), getAdapterPosition());
+                    }
+                }
+            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (callBackContactCard != null) {
+                        callBackContactCard.clicked(getContact(getAdapterPosition()), getAdapterPosition());
                     }
                 }
             });

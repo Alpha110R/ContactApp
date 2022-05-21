@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.example.contactappnew.Repository.GenderGenerator;
 import com.example.contactappnew.Repository.Repository;
+import com.example.contactappnew.Utils.FieldValidation;
+import com.example.contactappnew.Utils.MySignal;
 
 public class App extends Application {
 

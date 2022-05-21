@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.contactappnew.Entities.UserEntity;
 import com.example.contactappnew.Enums;
-import com.example.contactappnew.FieldValidation;
-import com.example.contactappnew.MySignal;
+import com.example.contactappnew.Utils.FieldValidation;
+import com.example.contactappnew.Utils.MySignal;
 import com.example.contactappnew.R;
 import com.example.contactappnew.Repository.Repository;
 import com.google.android.material.button.MaterialButton;
@@ -44,6 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
                 intent = new Intent(RegisterActivity.this, UserContactListActivity.class);
                 intent.putExtra(Enums.BUNDLE.toString(), bundle);
                 startActivity(intent);
+                finish();
             }
             else {
                 setPopUpValidation().show();
@@ -54,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         register_BTN_signIn.setOnClickListener(view -> {
             intent = new Intent(RegisterActivity.this, SignInActivity.class);
             startActivity(intent);
+            finish();
         });
     }
 

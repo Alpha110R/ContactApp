@@ -10,19 +10,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.contactappnew.CallBack_CreateGenderFotContact;
 import com.example.contactappnew.Entities.ContactEntity;
 import com.example.contactappnew.Enums;
-import com.example.contactappnew.FieldValidation;
+import com.example.contactappnew.Utils.FieldValidation;
 import com.example.contactappnew.R;
 import com.example.contactappnew.Repository.GenderGenerator;
 import com.example.contactappnew.Repository.Repository;
+import com.example.contactappnew.Utils.MySignal;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateUpdateContactActivity extends AppCompatActivity {
-    private TextInputEditText contact_EDT_firstName
-            ,contact_EDT_lastName
-            ,contact_EDT_email
-            ,contact_EDT_phoneNumber;
+    private TextInputEditText contact_EDT_firstName,
+                              contact_EDT_lastName,
+                              contact_EDT_email,
+                              contact_EDT_phoneNumber;
     private MaterialButton contact_BTN_finish, contact_BTN_exit;
     private Intent intent;
     private Bundle bundle;
@@ -54,8 +55,10 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
                     moveToPageWithBundle(UserContactListActivity.class);
                 } else
                     CreateUserAndInsertToDB();
-            }else
+            }else {
                 setPopUpValidation().show();
+                MySignal.getMe().vibrate();
+            }
             validateFlag = true;
         });
         contact_BTN_exit.setOnClickListener(view -> {
@@ -142,6 +145,7 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
         bundle.remove(Enums.CONTACTID.toString());
         intent.putExtra(Enums.BUNDLE.toString(), bundle);
         startActivity(intent);
+        finish();
     }
 
     /**

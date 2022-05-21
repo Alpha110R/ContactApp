@@ -23,6 +23,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Activities.RegisterActivity"
@@ -36,6 +37,11 @@
         </activity>
         <activity
             android:name=".Activities.CreateUpdateContactActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Activities.ShowContactActivity"
             android:exported="true"
             android:screenOrientation="portrait">
         </activity>

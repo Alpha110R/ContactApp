@@ -1,6 +1,4 @@
-package com.example.contactappnew;
-
-import android.content.Context;
+package com.example.contactappnew.Utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

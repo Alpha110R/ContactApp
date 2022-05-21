@@ -174,7 +174,6 @@
         android:orientation="vertical"
         android:gravity="center"
         android:layout_alignParentBottom="true"
-
         android:layout_marginTop="20dp">
         <com.google.android.material.button.MaterialButton
             android:id="@+id/contact_BTN_finish"

@@ -48,6 +48,12 @@ public class UserContactListActivity extends AppCompatActivity {
                 bundle.putInt(Enums.CONTACTID.toString(), contactEntity.getId());
                 moveToPageWithBundle(CreateUpdateContactActivity.class);
             }
+
+            @Override
+            public void clicked(ContactEntity contactEntity, int position) {
+                bundle.putInt(Enums.CONTACTID.toString(), contactEntity.getId());
+                moveToPageWithBundle(ShowContactActivity.class);
+            }
         });
 
         fab_addContact.setOnClickListener(view -> {
@@ -83,6 +89,7 @@ public class UserContactListActivity extends AppCompatActivity {
         intent = new Intent(UserContactListActivity.this, activity);
         intent.putExtra(Enums.BUNDLE.toString(),bundle);
         startActivity(intent);
+        finish();
     }
 
 }
