@@ -152,7 +152,7 @@
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/contact_EDT_password"
+                android:id="@+id/contact_EDT_phoneNumber"
                 android:layout_width="360dp"
                 android:layout_height="70dp"
                 android:drawableStart="@drawable/ic_edt_phone_30"

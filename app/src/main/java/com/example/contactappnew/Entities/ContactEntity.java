@@ -1,4 +1,4 @@
-package com.example.contactappnew;
+package com.example.contactappnew.Entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -11,21 +11,33 @@ import com.google.gson.annotations.SerializedName;
 public class ContactEntity {
 
     public ContactEntity(){}
-    ContactEntity(String phoneNumber, String firstName, String lastName, String gender, String email){
+
+    /**
+     *
+     * @param phoneNumber
+     * @param firstName
+     * @param lastName
+     * @param gender
+     * @param email
+     * @param userID
+     */
+    public ContactEntity(String phoneNumber, String firstName, String lastName, String gender, String email, int userID){
         this.phoneNumber = phoneNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.email = email;
+        this.userID = userID;
     }
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
+    @ColumnInfo(name = "id")
     private int id;
     public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public void setId(@NonNull int id) { this.id = id; }
 
-    @ColumnInfo(name = "phone_number")
+    @ColumnInfo(name = "Phone Number")
     private String phoneNumber;//TODO: can be multiple numbers
     public String getPhoneNumber() {
         return phoneNumber;
@@ -34,7 +46,8 @@ public class ContactEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    @ColumnInfo(name = "first_name")
+    @NonNull
+    @ColumnInfo(name = "First Name")
     private String firstName;
     public String getFirstName() {
         return firstName;
@@ -43,7 +56,7 @@ public class ContactEntity {
         this.firstName = firstName;
     }
 
-    @ColumnInfo(name = "last_Name")
+    @ColumnInfo(name = "Last Name")
     private String lastName;
     public String getLastName() {
         return lastName;
@@ -52,7 +65,8 @@ public class ContactEntity {
         this.lastName = lastName;
     }
 
-    @ColumnInfo(name = "gender")
+    @NonNull
+    @ColumnInfo(name = "Gender")
     private String gender;
     public String getGender() {
         return gender;
@@ -65,4 +79,9 @@ public class ContactEntity {
     private String email;
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
+    @ColumnInfo(name = "User ID")
+    private int userID;
+    public int getUserID() { return userID; }
+    public void setUserID(int userID) { this.userID = userID;}
 }

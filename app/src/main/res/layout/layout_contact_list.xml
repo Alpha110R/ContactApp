@@ -21,18 +21,37 @@
         tools:listitem="@layout/contact_card"
         android:layout_weight="1"/>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_addContact"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:src="@drawable/ic_add_contact_40"
-            app:tint="@color/white"
-            app:fabCustomSize="75dp"
-            app:maxImageSize="40dp"
-            android:layout_margin="16dp"
-            app:backgroundTint="#4770B6"
-            app:elevation="20dp"/>
+            android:orientation="horizontal"
+            android:gravity="center">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_logOutToSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_logout"
+                app:tint="@color/white"
+                app:fabCustomSize="75dp"
+                app:maxImageSize="40dp"
+                android:layout_margin="16dp"
+                app:backgroundTint="#4770B6"
+                app:elevation="20dp"/>
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="0dp"/>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab_addContact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add_contact_40"
+                    app:tint="@color/white"
+                    app:fabCustomSize="75dp"
+                    app:maxImageSize="40dp"
+                    android:layout_margin="16dp"
+                    app:backgroundTint="#4770B6"
+                    app:elevation="20dp"/>
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
