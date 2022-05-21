@@ -85,6 +85,4 @@ public class SignInActivity extends AppCompatActivity {
         }
         MySignal.getMe().vibrate();
     }
-
-
 }
