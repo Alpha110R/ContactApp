@@ -3,6 +3,7 @@ package com.example.contactappnew.Entities;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
@@ -11,24 +12,6 @@ import com.google.gson.annotations.SerializedName;
 public class ContactEntity {
 
     public ContactEntity(){}
-
-    /**
-     *
-     * @param phoneNumber
-     * @param firstName
-     * @param lastName
-     * @param gender
-     * @param email
-     * @param userID
-     */
-    public ContactEntity(String phoneNumber, String firstName, String lastName, String gender, String email, int userID){
-        this.phoneNumber = phoneNumber;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.email = email;
-        this.userID = userID;
-    }
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
@@ -80,6 +63,7 @@ public class ContactEntity {
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
+    @NonNull
     @ColumnInfo(name = "User ID")
     private int userID;
     public int getUserID() { return userID; }

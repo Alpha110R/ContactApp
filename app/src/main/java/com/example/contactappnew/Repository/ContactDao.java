@@ -19,8 +19,8 @@ public interface ContactDao {
     @Query("SELECT DISTINCT * FROM contact WHERE `User ID` LIKE:userID")
     List<ContactEntity> getContactsByUserID(int userID);
 
-    @Query("SELECT * FROM contact WHERE `User ID` LIKE :userID")
-    ContactEntity getContactByUserID(int userID);
+    @Query("SELECT * FROM contact WHERE `id` LIKE :contactID AND Email LIKE:mail")
+    ContactEntity getContactByContactIDEmail(int contactID, String mail);
 
     @Query("SELECT * FROM contact WHERE id LIKE :id")
     ContactEntity getContactByID(int id);

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.contactappnew.MySignal;
 import com.example.contactappnew.R;
@@ -34,7 +33,10 @@ public class SignInActivity extends AppCompatActivity {
             userMail = signIn_EDT_email.getText().toString();
             userPass = signIn_EDT_password.getText().toString();
             userEntity = Repository.getMe().getUserDao().getUser(userMail, userPass);
-            checksIfUserInDB();
+            if(userEntity != null)//Checks if user exist in the DB
+                moveToUserContactListActivity();
+            else//User doesn't exist in the DB
+                toastMessagesAccordingError();
         });
 
         signIn_BTN_register.setOnClickListener(view -> {
@@ -61,16 +63,11 @@ public class SignInActivity extends AppCompatActivity {
             bundle = new Bundle();
     }
 
-    public void checksIfUserInDB(){
-        if(userEntity != null){//Checks if user exist in the DB
-            intent = new Intent(SignInActivity.this, UserContactListActivity.class);
-            bundle.putInt(Enums.USERID.toString(), userEntity.getId());
-            intent.putExtra(Enums.BUNDLE.toString(), bundle);
-            startActivity(intent);
-        }
-        else{//User doesn't exist in the DB
-            toastMessagesAccordingError();
-        }
+    public void moveToUserContactListActivity(){
+        intent = new Intent(SignInActivity.this, UserContactListActivity.class);
+        bundle.putInt(Enums.USERID.toString(), userEntity.getId());
+        intent.putExtra(Enums.BUNDLE.toString(), bundle);
+        startActivity(intent);
     }
 
     public void toastMessagesAccordingError(){

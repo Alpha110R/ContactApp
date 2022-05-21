@@ -4,8 +4,6 @@ import android.app.Application;
 
 import androidx.room.Room;
 
-import com.example.contactappnew.UserDatabase;
-
 public class Repository {
     private static Repository me;
     private UserDao userDao;

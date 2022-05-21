@@ -32,7 +32,7 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
                    contactLastName,
                    contactEmail,
                    contactPhoneNumber,
-                   errorMessage;
+                   errorMessage="";
     private boolean validateFlag = true;
 
     @Override
@@ -187,14 +187,16 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
                 contact_EDT_email.setBackgroundColor(Color.parseColor("#4DFF6666"));
                 validateFlag = false;
             } else {
-                if (Repository.getMe().getContactDao().getContactByEmail(contactEmail) != null) {
-                    errorMessage += "\nThis Email exist";
-                    contact_EDT_email.setBackgroundColor(Color.parseColor("#4DFF6666"));
-                    validateFlag = false;
+                if (Repository.getMe().getContactDao().getContactByEmail(contactEmail) != null) {//Make sure this mail isn't ours
+                    if(Repository.getMe().getContactDao().getContactByEmail(contactEmail).getId() != contactID){
+                        errorMessage += "\nThis Email exists";
+                        contact_EDT_email.setBackgroundColor(Color.parseColor("#4DFF6666"));
+                        validateFlag = false;
+                    }
                 } else
                     contact_EDT_email.setBackgroundColor(Color.TRANSPARENT);
             }
-        }
+        }else contact_EDT_email.setBackgroundColor(Color.TRANSPARENT);
         if(!contactPhoneNumber.equals("")) {
             if (!FieldValidation.getMe().isValidPhoneNumber(contactPhoneNumber)) {
                 errorMessage += "\nPhone Number not valid. Needs to be 10 digits";
@@ -202,7 +204,7 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
                 validateFlag = false;
             } else
                 contact_EDT_phoneNumber.setBackgroundColor(Color.TRANSPARENT);
-        }
+        }else contact_EDT_phoneNumber.setBackgroundColor(Color.TRANSPARENT);
         return validateFlag;
     }
     public MaterialAlertDialogBuilder setPopUpValidation(){

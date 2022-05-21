@@ -1,4 +1,4 @@
-package com.example.contactappnew;
+package com.example.contactappnew.Repository;
 
 
 import androidx.room.Database;

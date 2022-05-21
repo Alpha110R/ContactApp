@@ -8,7 +8,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.contactappnew.Entities.UserEntity;
+import com.example.contactappnew.Enums;
 import com.example.contactappnew.FieldValidation;
+import com.example.contactappnew.MySignal;
 import com.example.contactappnew.R;
 import com.example.contactappnew.Repository.Repository;
 import com.google.android.material.button.MaterialButton;
@@ -24,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private UserEntity userEntity;
     private String userFirstName, userLastName, userEmail, userPassword;
     private Intent intent;
+    private Bundle bundle;
     private String errorMessage = "";
     private boolean validateFlag=true;
 
@@ -32,12 +35,20 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_create_account);
         findViews();
+        bundle = new Bundle();
         register_BTN_register.setOnClickListener(view -> {
             getTextFieldsFromUser();
-            if(checksFields())
+            if(checksFields()) {
                 CreateUserAndInsertToDB();
-            else
-                setPopUp().show();
+                MySignal.getMe().makeToastMessage("Register Completed");
+                intent = new Intent(RegisterActivity.this, UserContactListActivity.class);
+                intent.putExtra(Enums.BUNDLE.toString(), bundle);
+                startActivity(intent);
+            }
+            else {
+                setPopUpValidation().show();
+                MySignal.getMe().vibrate();
+            }
             validateFlag=true;
         });
         register_BTN_signIn.setOnClickListener(view -> {
@@ -65,6 +76,8 @@ public class RegisterActivity extends AppCompatActivity {
     private void CreateUserAndInsertToDB(){
         userEntity = new UserEntity(userFirstName, userLastName, userEmail, userPassword);
         Repository.getMe().getUserDao().insertUser(userEntity);
+        userEntity = Repository.getMe().getUserDao().getUserByEmail(userEmail);
+        bundle.putInt(Enums.USERID.toString(), userEntity.getId());
     }
 
     public boolean checksFields(){
@@ -85,14 +98,14 @@ public class RegisterActivity extends AppCompatActivity {
             errorMessage += "\nEmail not valid";
             register_EDT_email.setBackgroundColor(Color.parseColor("#4DFF6666"));
             validateFlag=false;
-        }else
-            register_EDT_email.setBackgroundColor(Color.TRANSPARENT);
-        if(Repository.getMe().getUserDao().getUserByEmail(userEmail) != null){
-            errorMessage += "\nThis Email exist";
-            register_EDT_email.setBackgroundColor(Color.parseColor("#4DFF6666"));
-            validateFlag=false;
-        }else
-            register_EDT_email.setBackgroundColor(Color.TRANSPARENT);
+        }else {
+            if (Repository.getMe().getUserDao().getUserByEmail(userEmail) != null) {
+                errorMessage += "\nThis Email exists";
+                register_EDT_email.setBackgroundColor(Color.parseColor("#4DFF6666"));
+                validateFlag = false;
+            } else
+                register_EDT_email.setBackgroundColor(Color.TRANSPARENT);
+        }
         if(!FieldValidation.getMe().isValidPassword(userPassword)) {
             errorMessage += "\nPassword not valid, needs 5 to 18 chars";
             register_EDT_password.setBackgroundColor(Color.parseColor("#4DFF6666"));
@@ -101,7 +114,7 @@ public class RegisterActivity extends AppCompatActivity {
             register_EDT_password.setBackgroundColor(Color.TRANSPARENT);
         return validateFlag;
     }
-    public MaterialAlertDialogBuilder setPopUp(){
+    public MaterialAlertDialogBuilder setPopUpValidation(){
         MaterialAlertDialogBuilder selectGameScreen = new MaterialAlertDialogBuilder(this)
                 .setIcon(R.drawable.ic_caution)
                 .setTitle("ERROR")
