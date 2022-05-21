@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#E7ECF6">
 
@@ -12,31 +12,47 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
+            android:minHeight="80dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="#E7ECF6"
             android:orientation="horizontal">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/contactCard_LBL_contactName"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:orientation="vertical"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:paddingStart="8dp"
-                android:text="Contact Name"
-                android:textColor="#282F3A"
-                android:textSize="35sp" />
+                android:layout_gravity="center">
+                 <com.google.android.material.textview.MaterialTextView
+                     android:id="@+id/contactCard_LBL_contactName"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:fontFamily="sans-serif-condensed-medium"
+                     android:paddingStart="8dp"
+                     android:text="Contact Name"
+                     android:textColor="#282F3A"
+                     android:textSize="35sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/contactCard_LBL_contactGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:paddingStart="8dp"
+                    android:text="Contact Gender"
+                    android:textColor="#282F3A"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:layout_marginEnd="8dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginEnd="8dp">
+                android:orientation="horizontal">
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/contactCard_BTN_remove"
                     android:layout_width="30dp"
@@ -44,9 +60,11 @@
                     android:layout_gravity="center"
                     android:background="@drawable/ic_trash"
                     app:backgroundTint="#EA3030" />
+
                 <Space
                     android:layout_width="20dp"
-                    android:layout_height="0dp"/>
+                    android:layout_height="0dp" />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/contactCard_BTN_settings"
                     android:layout_width="40dp"

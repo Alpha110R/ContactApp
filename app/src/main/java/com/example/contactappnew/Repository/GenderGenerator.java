@@ -3,6 +3,8 @@ package com.example.contactappnew.Repository;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.contactappnew.CallBack_CreateGenderFotContact;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -10,10 +12,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class GenderGenerator{
-    public static Call<UserGender> call;
-    public static GenderApi api;
+
+    private Call<UserGender> call;
+    private GenderApi api;
     public static GenderGenerator me;
-    public static UserGender userGender;
+    private String gender;
+    private CallBack_CreateGenderFotContact callBack_createGenderFotContact = null;
 
     public GenderGenerator(){
          api=new Retrofit.Builder()
@@ -29,14 +33,18 @@ public class GenderGenerator{
     }
     public static GenderGenerator getMe() { return me; }
 
-    public String getGenderForName(String name) {
+    public void setCallBack_CreateGenderFotContact(CallBack_CreateGenderFotContact callBack_createGenderFotContact){
+        this.callBack_createGenderFotContact = callBack_createGenderFotContact;
+    }
+
+    public void getGenderForName(String name) {
         call = api.getGender(name);
         call.enqueue(new Callback<UserGender>() {
             @Override
             public void onResponse(Call<UserGender> call, Response<UserGender> response) {
                 if (response.isSuccessful()) {
-                    userGender = response.body();
-                    Log.d("tagg", "response: " + response.body().toString());
+                    gender = response.body().getGender();
+                    callBack_createGenderFotContact.genderGenerated(gender);
                 }
             }
 
@@ -44,7 +52,6 @@ public class GenderGenerator{
             public void onFailure(Call<UserGender> call, Throwable t) {
             }
         });
-        return userGender.getGender();
     }
 }
 

@@ -12,5 +12,7 @@ public class App extends Application {
         super.onCreate();
         Repository.initHelper(this);
         GenderGenerator.initHelper();
+        MySignal.initHelper(this);
+        FieldValidation.initHelper();
     }
 }

@@ -145,8 +145,6 @@
             app:endIconMode="password_toggle"
             app:endIconTint="#6191E4"
             app:hintTextColor="#282F3A"
-            app:counterEnabled="true"
-            app:counterMaxLength="10"
             app:errorEnabled="true"
             app:hintEnabled="false">
 

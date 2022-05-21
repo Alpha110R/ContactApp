@@ -20,12 +20,11 @@ import java.util.ArrayList;
 
 public class UserContactListActivity extends AppCompatActivity {
     private Intent intent;
+    private Bundle bundle;
     private int userID;
-    private UserEntity userEntity;
     private RecyclerView contactList_LST_contacts;
     private ArrayList <ContactEntity> contacts;
     private ContactAdapterToListView contactAdapterToListView;
-    private CreateUpdateContactActivity createUpdateContactActivity;
     private FloatingActionButton fab_logOutToSignIn, fab_addContact;
 
     @Override
@@ -33,14 +32,9 @@ public class UserContactListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_contact_list);
         findViews();
-
-        intent = getIntent();
-        userID = intent.getIntExtra(Enums.USERID.toString(),0);
-        Log.d("tagg","USERCONTACTLIST user iD: " + userID);
-
+        initializeIntentBundleAndUserID();
         contactAdapterToListView = new ContactAdapterToListView(this);
         restartContactAdapterToListView();
-
 
         contactAdapterToListView.setCallBack_ContactCard(new ContactAdapterToListView.CallBack_ContactCard(){
             @Override
@@ -51,18 +45,17 @@ public class UserContactListActivity extends AppCompatActivity {
 
             @Override
             public void settings(ContactEntity contactEntity, int position){
-                intent = new Intent(UserContactListActivity.this, CreateUpdateContactActivity.class);
-                intent.putExtra(Enums.USERID.toString(), userID);
-                intent.putExtra(Enums.CONTACTID.toString(), contactEntity.getId());
-                startActivity(intent);
+                bundle.putInt(Enums.CONTACTID.toString(), contactEntity.getId());
+                moveToPageWithBundle(CreateUpdateContactActivity.class);
             }
         });
 
-
         fab_addContact.setOnClickListener(view -> {
-            intent = new Intent(UserContactListActivity.this, CreateUpdateContactActivity.class);
-            intent.putExtra(Enums.USERID.toString(), userID);
-            startActivity(intent);
+            bundle.remove(Enums.CONTACTID.toString());
+            moveToPageWithBundle(CreateUpdateContactActivity.class);
+        });
+        fab_logOutToSignIn.setOnClickListener(view -> {
+            moveToPageWithBundle(SignInActivity.class);
         });
     }
 
@@ -73,13 +66,23 @@ public class UserContactListActivity extends AppCompatActivity {
     }
 
     public void restartContactAdapterToListView(){
-        contacts = new ArrayList<ContactEntity>(Repository.getMe().getContactDao().getContactsByUserID(userID));
-        Log.d("tagg", "contacts lisr: " + contacts.get(0).getFirstName());
-
+        contacts = new ArrayList<>(Repository.getMe().getContactDao().getContactsByUserID(userID));
         contactAdapterToListView.setContacts(contacts);
         contactList_LST_contacts.setLayoutManager(new LinearLayoutManager(UserContactListActivity.this));
         contactList_LST_contacts.setHasFixedSize(true);
         contactList_LST_contacts.setAdapter(contactAdapterToListView);
+    }
+
+    public void initializeIntentBundleAndUserID(){
+        intent = getIntent();
+        bundle = intent.getBundleExtra(Enums.BUNDLE.toString());
+        userID = bundle.getInt(Enums.USERID.toString());
+    }
+
+    public void moveToPageWithBundle(Class activity){
+        intent = new Intent(UserContactListActivity.this, activity);
+        intent.putExtra(Enums.BUNDLE.toString(),bundle);
+        startActivity(intent);
     }
 
 }

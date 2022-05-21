@@ -80,8 +80,6 @@
             android:textColorHint="#282F3A"
             app:boxStrokeColor="#6191E4"
             app:cornerRadius="20dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="10"
             app:endIconMode="password_toggle"
             app:endIconTint="#6191E4"
             app:errorEnabled="true"
