@@ -54,26 +54,3 @@ public class GenderGenerator{
         });
     }
 }
-
-
-/*
-
-Retrofit retrofit=new Retrofit.Builder()
-            .baseUrl("https://api.genderize.io/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build().create(GenderApi.class);
-   GenderApi api = retrofit.create(GenderApi.class);
-       Call<UserGender> call = api.getGender(name);
-        call.enqueue(new Callback<UserGender>() {
-            @Override
-            public void onResponse(Call<UserGender> call, Response<UserGender> response) {
-                if (response.isSuccessful()) {
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UserGender> call, Throwable t) {
-            }
-        });
- */

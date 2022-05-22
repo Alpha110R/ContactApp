@@ -191,8 +191,8 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
                 contact_EDT_email.setBackgroundColor(Color.parseColor("#4DFF6666"));
                 validateFlag = false;
             } else {
-                if (Repository.getMe().getContactDao().getContactByEmail(contactEmail) != null) {//Make sure this mail isn't ours
-                    if(Repository.getMe().getContactDao().getContactByEmail(contactEmail).getId() != contactID){
+                if (Repository.getMe().getContactDao().getContactByEmailAndUserID(contactEmail, userID) != null) {//Make sure this mail isn't ours
+                    if(Repository.getMe().getContactDao().getContactByEmailAndUserID(contactEmail, userID).getId() != contactID){
                         errorMessage += "\nThis Email exists";
                         contact_EDT_email.setBackgroundColor(Color.parseColor("#4DFF6666"));
                         validateFlag = false;

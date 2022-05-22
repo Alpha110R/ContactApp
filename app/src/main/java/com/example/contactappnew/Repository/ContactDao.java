@@ -19,20 +19,14 @@ public interface ContactDao {
     @Query("SELECT DISTINCT * FROM contact WHERE `User ID` LIKE:userID")
     List<ContactEntity> getContactsByUserID(int userID);
 
-    @Query("SELECT * FROM contact WHERE `id` LIKE :contactID AND Email LIKE:mail")
-    ContactEntity getContactByContactIDEmail(int contactID, String mail);
-
     @Query("SELECT * FROM contact WHERE id LIKE :id")
     ContactEntity getContactByID(int id);
 
-    @Query("SELECT * FROM contact WHERE `First Name` LIKE :firstName AND `Last Name` LIKE:lastName")
-    ContactEntity getContactByFirstAndLastName(String firstName, String lastName);
+    @Query("SELECT * FROM contact WHERE `First Name` LIKE :firstName AND `Last Name` LIKE:lastName AND `User ID` LIKE:userID")
+    ContactEntity getContactByFirstAndLastNameAndUserID(String firstName, String lastName, int userID);
 
-    @Query("SELECT * FROM contact WHERE Email LIKE :email")
-    ContactEntity getContactByEmail(String email);
-
-    @Query("SELECT * FROM contact WHERE `Phone Number` LIKE :phoneNumber")
-    ContactEntity getContactByPhoneNumber(String phoneNumber);
+    @Query("SELECT * FROM contact WHERE Email LIKE :email AND `User ID` LIKE:userID")
+    ContactEntity getContactByEmailAndUserID(String email, int userID);
 
     @Update
     void updateContactEntity(ContactEntity contactEntity);
