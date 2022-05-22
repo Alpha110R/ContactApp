@@ -1,5 +1,5 @@
 # ContactApp
 
-🎮 A short app and code demonstration:
+# 🎮 A short app and code demonstration:
 
-(https://youtu.be/qIJgrHVKaq0)
+https://youtu.be/qIJgrHVKaq0
