@@ -34,7 +34,7 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
                    contactEmail,
                    contactPhoneNumber,
                    errorMessage="";
-    private boolean validateFlag = true;
+    private boolean validateFlag = true, InsertContact=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
                     moveToPageWithBundle(UserContactListActivity.class);
                 } else
                     CreateUserAndInsertToDB();
+                //contact_BTN_finish.setPressed(true);
             }else {
                 setPopUpValidation().show();
                 MySignal.getMe().vibrate();
@@ -108,7 +109,7 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
      */
     private void updateUserAndInsertToDB(){
         setContactEntity();
-        Repository.getMe().getContactDao().updateContactEntity(contactEntity);
+        GenderGenerator.getMe().getGenderForName(contactFirstName);
     }
 
     /**
@@ -118,6 +119,7 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
         contactEntity = new ContactEntity();
         setContactEntity();
         contactEntity.setUserID(userID);
+        InsertContact = true;
         GenderGenerator.getMe().getGenderForName(contactFirstName);
     }
 
@@ -133,9 +135,13 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
      */
     private CallBack_CreateGenderFotContact callBack_createGenderFotContact = new CallBack_CreateGenderFotContact() {
         @Override
-        public void genderGenerated(String gender) {
+        public void genderGeneratedForContact(String gender) {
             contactEntity.setGender(gender);
-            Repository.getMe().getContactDao().insertContact(contactEntity);
+            if(InsertContact)
+                Repository.getMe().getContactDao().insertContact(contactEntity);
+            else
+                Repository.getMe().getContactDao().updateContactEntity(contactEntity);
+            InsertContact = false;
             moveToPageWithBundle(UserContactListActivity.class);
         }
     };

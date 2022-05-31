@@ -1,5 +1,7 @@
 package com.example.contactappnew.Entities;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -8,7 +10,10 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "contact")
+@Entity(tableName = "contact", foreignKeys=@ForeignKey(entity = UserEntity.class,
+                                                                parentColumns = "ID",
+                                                                childColumns = "User ID",
+                                                                onDelete = CASCADE))
 public class ContactEntity {
 
     public ContactEntity(){}

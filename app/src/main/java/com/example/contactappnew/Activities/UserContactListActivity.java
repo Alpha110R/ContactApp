@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.contactappnew.ContactAdapterToListView;
+import com.example.contactappnew.ContactComparatorByName;
 import com.example.contactappnew.Entities.ContactEntity;
 import com.example.contactappnew.R;
 import com.example.contactappnew.Repository.Repository;
@@ -17,13 +18,15 @@ import com.example.contactappnew.Enums;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class UserContactListActivity extends AppCompatActivity {
     private Intent intent;
     private Bundle bundle;
     private int userID;
     private RecyclerView contactList_LST_contacts;
-    private ArrayList <ContactEntity> contacts;
+    private List<ContactEntity> contacts;
     private ContactAdapterToListView contactAdapterToListView;
     private FloatingActionButton fab_logOutToSignIn, fab_addContact;
 
@@ -40,7 +43,6 @@ public class UserContactListActivity extends AppCompatActivity {
             @Override
             public void remove(ContactEntity contactEntity, int position){
                 Repository.getMe().getContactDao().deleteContact(contactEntity.getId());
-                restartContactAdapterToListView();
             }
 
             @Override
@@ -73,6 +75,7 @@ public class UserContactListActivity extends AppCompatActivity {
 
     public void restartContactAdapterToListView(){
         contacts = new ArrayList<>(Repository.getMe().getContactDao().getContactsByUserID(userID));
+        Collections.sort(contacts, new ContactComparatorByName());
         contactAdapterToListView.setContacts(contacts);
         contactList_LST_contacts.setLayoutManager(new LinearLayoutManager(UserContactListActivity.this));
         contactList_LST_contacts.setHasFixedSize(true);

@@ -13,6 +13,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ContactAdapterToListView extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
@@ -22,7 +23,7 @@ public class ContactAdapterToListView extends RecyclerView.Adapter<RecyclerView.
         void clicked(ContactEntity contactEntity, int position);
     }
 
-    private ArrayList<ContactEntity> contacts;
+    private List<ContactEntity> contacts;
     private CallBack_ContactCard callBackContactCard;
     private Activity activity;
 
@@ -33,7 +34,7 @@ public class ContactAdapterToListView extends RecyclerView.Adapter<RecyclerView.
         this.callBackContactCard = callBackContactCard;
     }
 
-    public ContactAdapterToListView setContacts(ArrayList<ContactEntity> contacts) {
+    public ContactAdapterToListView setContacts(List<ContactEntity> contacts) {
         this.contacts = contacts;
         return this;
     }
@@ -81,6 +82,8 @@ public class ContactAdapterToListView extends RecyclerView.Adapter<RecyclerView.
                 public void onClick(View view) {
                     if (callBackContactCard != null) {
                         callBackContactCard.remove(getContact(getAdapterPosition()), getAdapterPosition());
+                        contacts.remove(getAdapterPosition());
+                        notifyItemRemoved(getAdapterPosition());
                     }
                 }
             });
