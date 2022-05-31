@@ -55,7 +55,7 @@ public class CreateUpdateContactActivity extends AppCompatActivity {
                     moveToPageWithBundle(UserContactListActivity.class);
                 } else
                     CreateUserAndInsertToDB();
-                //contact_BTN_finish.setPressed(true);
+                contact_BTN_finish.setClickable(false);
             }else {
                 setPopUpValidation().show();
                 MySignal.getMe().vibrate();
