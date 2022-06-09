@@ -12,6 +12,38 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:gravity="center"
+            android:textColorHint="#282F3A"
+            app:boxStrokeColor="#6191E4"
+            app:cornerRadius="20dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="#6191E4"
+            app:errorEnabled="true"
+            app:hintTextColor="#282F3A"
+            app:hintEnabled="false"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contactList_EDT_search"
+                android:layout_width="360dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
+                android:drawablePadding="10dp"
+                android:drawableTint="#6191E4"
+                android:hint="@string/search"
+                android:ems="10"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:textColor="#282F3A"
+                android:textSize="25sp"
+                android:textCursorDrawable="@drawable/color_cursor"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/contactList_LST_contacts"
             android:layout_width="match_parent"
