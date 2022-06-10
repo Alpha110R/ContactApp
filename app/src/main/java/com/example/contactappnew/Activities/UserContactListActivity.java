@@ -49,6 +49,13 @@ public class UserContactListActivity extends AppCompatActivity {
 
             public void afterTextChanged(Editable s) {
                 Log.d("tagg", "afterTextChanged");
+                if(s.length() == 0){
+                    contacts = new ArrayList<>(Repository.getMe().getContactDao().getContactsByUserID(userID));
+                    Collections.sort(contacts, new ContactComparatorByName());
+                    contactAdapterToListView.setContacts(contacts);
+                    contactAdapterToListView.notifyDataSetChanged();
+
+                }
             }
 
             public void beforeTextChanged(CharSequence s, int start,
@@ -62,7 +69,6 @@ public class UserContactListActivity extends AppCompatActivity {
                 Log.d("tagg", "onTextChanged");
                 contactAdapterToListView.setContacts(getListContactBySearch(s.toString()));
                 contactAdapterToListView.notifyDataSetChanged();
-                //TextView myOutputBox = (TextView) findViewById(R.id.contactList_EDT_search);
             }
         });
 
