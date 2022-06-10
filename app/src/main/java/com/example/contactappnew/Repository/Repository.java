@@ -19,7 +19,7 @@ public class Repository {
 
     private Repository (Application application){
         this.application = application;
-        UserDatabase DB = Room.databaseBuilder(application, UserDatabase.class, "Database.db")
+        UserDatabase DB = Room.databaseBuilder(application, UserDatabase.class, "database.db")
                 .allowMainThreadQueries()
                 .build();
         userDao = DB.getUserDao();

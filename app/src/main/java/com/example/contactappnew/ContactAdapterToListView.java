@@ -83,6 +83,8 @@ public class ContactAdapterToListView extends RecyclerView.Adapter<RecyclerView.
                 public void onClick(View view) {
                     if (callBackContactCard != null) {
                         callBackContactCard.remove(getContact(getAdapterPosition()), getAdapterPosition());
+                        contacts.remove(getAdapterPosition());
+                        notifyItemRemoved(getAdapterPosition());
                     }
                 }
             });

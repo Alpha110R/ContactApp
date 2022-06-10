@@ -1,8 +1,5 @@
 package com.example.contactappnew.Repository;
 
-import android.content.Context;
-import android.util.Log;
-
 import com.example.contactappnew.CallBack_CreateGenderFotContact;
 
 import retrofit2.Call;
@@ -44,7 +41,7 @@ public class GenderGenerator{
             public void onResponse(Call<UserGender> call, Response<UserGender> response) {
                 if (response.isSuccessful()) {
                     gender = response.body().getGender();
-                    callBack_createGenderFotContact.genderGenerated(gender);
+                    callBack_createGenderFotContact.genderGeneratedForContact(gender);
                 }
             }
 
